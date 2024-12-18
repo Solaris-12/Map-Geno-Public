@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsn24gprov5fw"]
+
+[ext_resource type="Material" uid="uid://f0g3splbn4w0" path="res://assets/materials/red_material.tres" id="1_03fi0"]
+[ext_resource type="Script" path="res://scripts/object_edit_cursor.gd" id="1_4lytu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l0e7e"]
+height = 3.03821
+radius = 0.126555
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0lhgu"]
+material = ExtResource("1_03fi0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ongx6"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.142736, 0.580748, 1.92523e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dpt1i"]
+material = SubResource("StandardMaterial3D_ongx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30as3"]
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.326868, 0.707785, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8grio"]
+material = SubResource("StandardMaterial3D_30as3")
+
+[node name="ObjectEditCursor" type="Node3D"]
+script = ExtResource("1_4lytu")
+
+[node name="Xaxis" type="Node3D" parent="."]
+
+[node name="XAxisArea" type="Area3D" parent="Xaxis"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Xaxis/XAxisArea"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.54031, 0, 0)
+shape = SubResource("CylinderShape3D_l0e7e")
+
+[node name="XAxisMesh" type="MeshInstance3D" parent="Xaxis"]
+transform = Transform3D(-9.56747e-09, 1.40577, 0, -0.218878, -6.14482e-08, 0, 0, 0, 0.218878, 1.42613, 0, 0)
+mesh = SubResource("CylinderMesh_0lhgu")
+
+[node name="Yaxis" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="YAxisArea" type="Area3D" parent="Yaxis"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Yaxis/YAxisArea"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.54031, 0, 0)
+shape = SubResource("CylinderShape3D_l0e7e")
+
+[node name="YAxisMesh" type="MeshInstance3D" parent="Yaxis"]
+transform = Transform3D(-9.56747e-09, -1.40577, 0, 0.218878, -6.14482e-08, 0, 0, 0, 0.218878, 1.35935, 5.94189e-08, 0)
+mesh = SubResource("CylinderMesh_dpt1i")
+
+[node name="Zaxis" type="Node3D" parent="."]
+transform = Transform3D(0, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="ZAxisArea" type="Area3D" parent="Zaxis"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Zaxis/ZAxisArea"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.54031, 0, 0)
+shape = SubResource("CylinderShape3D_l0e7e")
+
+[node name="ZAxisMesh" type="MeshInstance3D" parent="Zaxis"]
+transform = Transform3D(-0.00012602, -1.40577, 0.000457285, 0.218877, -0.000801294, 0.000603953, -0.000603691, 0.00293918, 0.218877, 1.35935, 5.94189e-08, 0)
+mesh = SubResource("CylinderMesh_8grio")
+
+[connection signal="input_event" from="Xaxis/XAxisArea" to="." method="_on_x_axis_area_input_event"]
+[connection signal="mouse_entered" from="Xaxis/XAxisArea" to="." method="_on_x_axis_area_mouse_entered"]
+[connection signal="mouse_exited" from="Xaxis/XAxisArea" to="." method="_on_x_axis_area_mouse_exited"]
+[connection signal="mouse_entered" from="Yaxis/YAxisArea" to="." method="_on_y_axis_area_mouse_entered"]
+[connection signal="mouse_exited" from="Yaxis/YAxisArea" to="." method="_on_y_axis_area_mouse_exited"]
+[connection signal="mouse_entered" from="Zaxis/ZAxisArea" to="." method="_on_z_axis_area_mouse_entered"]
+[connection signal="mouse_exited" from="Zaxis/ZAxisArea" to="." method="_on_z_axis_area_mouse_exited"]

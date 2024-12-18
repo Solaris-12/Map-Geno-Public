@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">INFO</s:String>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oxy\c#\scp\__Useful\dll\Exiled.API.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oldat\Github\Solaris\map-geno-private\MapGeno.Plugin\bin\Release\Assembly-CSharp-firstpass.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oldat\Github\Solaris\map-geno-private\MapGeno.Plugin\bin\Release\Assembly-CSharp.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oldat\Downloads\Assembly-CSharp.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oldat\Github\Solaris\map-geno-private\MapGeno.Plugin\bin\Release\Exiled.API.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

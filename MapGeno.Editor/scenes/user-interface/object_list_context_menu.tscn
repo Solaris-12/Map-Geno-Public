@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://brvhun5eisap3"]
+
+[ext_resource type="Theme" uid="uid://d1xrnjyq6hdob" path="res://theme.tres" id="1_68xlh"]
+[ext_resource type="Texture2D" uid="uid://cvsylu4byksat" path="res://assets/icons/trash-icon.png" id="2_1i5hq"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/context_menus/object_list_context_menu.gd" id="2_l06bn"]
+[ext_resource type="Texture2D" uid="uid://bf3m8b6yeua8e" path="res://assets/icons/duplicate-icon.png" id="3_qahk0"]
+[ext_resource type="FontFile" uid="uid://chqy42iuayboi" path="res://assets/fonts/Inter-Medium.ttf" id="5_1bi86"]
+[ext_resource type="Texture2D" uid="uid://dl23ayy4pdt3d" path="res://assets/icons/folder-icon.png" id="6_6paxa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_50pxa"]
+font = ExtResource("5_1bi86")
+font_size = 10
+
+[node name="ObjectListContextMenu" type="CanvasLayer"]
+layer = 4
+script = ExtResource("2_l06bn")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.222
+anchor_bottom = 0.265
+offset_right = 0.255981
+offset_bottom = 0.279984
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_68xlh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.05
+offset_bottom = 0.0499878
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RemoveButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Remove Objects"
+icon = ExtResource("2_1i5hq")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+
+[node name="DuplicateButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Duplicate Objects"
+icon = ExtResource("3_qahk0")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "
+Change parent"
+label_settings = SubResource("LabelSettings_50pxa")
+
+[node name="ParentSelect" type="OptionButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Change Parent"
+fit_to_longest_item = false
+allow_reselect = true
+
+[node name="GroupButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Group Selection"
+icon = ExtResource("6_6paxa")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/DuplicateButton" to="." method="_on_duplicate_button_pressed"]
+[connection signal="item_selected" from="Panel/VBoxContainer/ParentSelect" to="." method="_on_parent_select_item_selected"]
+[connection signal="pressed" from="Panel/VBoxContainer/GroupButton" to="." method="_on_group_button_pressed"]

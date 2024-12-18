@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://ono2td3obrkq"]
+
+[ext_resource type="Texture2D" uid="uid://oafewdjs16l5" path="res://assets/icons/light-icon.png" id="1_u5h0d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ly8xk"]
+size = Vector3(0.501953, 0.396484, 0.404541)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ki6b"]
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+shading_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_u5h0d")
+albedo_texture_force_srgb = true
+detail_enabled = true
+detail_mask = ExtResource("1_u5h0d")
+detail_blend_mode = 3
+detail_uv_layer = 1
+texture_filter = 2
+disable_receive_shadows = true
+proximity_fade_distance = 10.15
+distance_fade_mode = 1
+distance_fade_max_distance = 5.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gnoc4"]
+material = SubResource("StandardMaterial3D_5ki6b")
+size = Vector2(1, 1)
+
+[node name="PrimitiveLight" type="Area3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ly8xk")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.522596, 0.00702805, 0.00624734, -0.00626392, 0.0154236, -0.516436, -0.00377, -0.999857, -0.00792253, 5.62668e-05, -0.0265844, 0.000322104)
+mesh = SubResource("PlaneMesh_gnoc4")
+
+[node name="Light" type="OmniLight3D" parent="."]

@@ -1,0 +1,216 @@
+[gd_scene load_steps=14 format=3 uid="uid://bf45wfjtohbm5"]
+
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/modals/settings-modal.gd" id="1_dbyi4"]
+[ext_resource type="Theme" uid="uid://d1xrnjyq6hdob" path="res://theme.tres" id="1_ih2d2"]
+[ext_resource type="Texture2D" uid="uid://dcghmwmlh0nfm" path="res://assets/icons/close-icon.png" id="2_vg7gu"]
+[ext_resource type="StyleBox" uid="uid://6gvjl5eo3ycq" path="res://scenes/user-interface/settings-scroll-container.stylebox" id="3_rhocj"]
+[ext_resource type="Texture2D" uid="uid://bdfg8kwhcug7x" path="res://full-icon.png" id="4_1vpvn"]
+[ext_resource type="FontFile" uid="uid://c314u6hxx1trx" path="res://assets/fonts/Inter-Bold.ttf" id="5_57whm"]
+[ext_resource type="FontFile" uid="uid://bxbyvwfc7osvq" path="res://assets/fonts/Inter-Regular.ttf" id="6_lf1du"]
+[ext_resource type="FontFile" uid="uid://cl5eyb8dxuqh5" path="res://assets/fonts/Inter-Thin.ttf" id="7_ebxr6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vaac4"]
+font = ExtResource("5_57whm")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_hx50j"]
+font = ExtResource("5_57whm")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_mdh4q"]
+font = ExtResource("6_lf1du")
+font_size = 12
+font_color = Color(0.65834, 0.65834, 0.65834, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8ol1"]
+font = ExtResource("7_ebxr6")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcvng"]
+font = ExtResource("6_lf1du")
+font_size = 12
+font_color = Color(1, 0.443137, 0.423529, 1)
+
+[node name="SettingsModal" type="CanvasLayer"]
+layer = 8
+script = ExtResource("1_dbyi4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.329412)
+
+[node name="SettingsPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -173.0
+offset_right = 314.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ih2d2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_vaac4")
+
+[node name="Control" type="Control" parent="SettingsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("2_vg7gu")
+
+[node name="TabContainer" type="TabContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ih2d2")
+
+[node name="Render" type="ScrollContainer" parent="SettingsPanel/VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_rhocj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/VBoxContainer/TabContainer/Render"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSyncCheckbox" type="CheckButton" parent="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer"]
+layout_mode = 2
+text = "Vsync enabled"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Max framerate"
+
+[node name="Control" type="Control" parent="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MaxFramerateInput" type="LineEdit" parent="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="AntiAlliasingCheckbox" type="CheckButton" parent="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer"]
+layout_mode = 2
+text = "Anti Alliasing"
+
+[node name="World" type="ScrollContainer" parent="SettingsPanel/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_rhocj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/VBoxContainer/TabContainer/World"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Background distance"
+
+[node name="Control" type="Control" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackgroundDistanceInput" type="LineEdit" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Max raycast hit import"
+
+[node name="Control" type="Control" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MaxRaycastHitsInput" type="LineEdit" parent="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="MapGeno" type="ScrollContainer" parent="SettingsPanel/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="SettingsPanel/VBoxContainer/TabContainer/MapGeno"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/VBoxContainer/TabContainer/MapGeno/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPanel/VBoxContainer/TabContainer/MapGeno/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_1vpvn")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer/TabContainer/MapGeno/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Map Geno"
+label_settings = SubResource("LabelSettings_hx50j")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="SettingsPanel/VBoxContainer/TabContainer/MapGeno/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "by Solaris-12"
+label_settings = SubResource("LabelSettings_mdh4q")
+horizontal_alignment = 1
+
+[node name="VERSION" type="Label" parent="SettingsPanel/VBoxContainer/TabContainer/MapGeno/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "VERSION"
+label_settings = SubResource("LabelSettings_k8ol1")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Some settings may require restart"
+label_settings = SubResource("LabelSettings_bcvng")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ApplyButton" type="Button" parent="SettingsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[connection signal="pressed" from="SettingsPanel/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="toggled" from="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer/VSyncCheckbox" to="." method="_on_v_sync_checkbox_toggled"]
+[connection signal="text_changed" from="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer/HBoxContainer/MaxFramerateInput" to="." method="_on_max_framerate_input_text_changed"]
+[connection signal="toggled" from="SettingsPanel/VBoxContainer/TabContainer/Render/VBoxContainer/AntiAlliasingCheckbox" to="." method="_on_anti_alliasing_checkbox_toggled"]
+[connection signal="text_changed" from="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer/BackgroundDistanceInput" to="." method="_on_background_distance_input_text_changed"]
+[connection signal="text_changed" from="SettingsPanel/VBoxContainer/TabContainer/World/VBoxContainer/HBoxContainer2/MaxRaycastHitsInput" to="." method="_on_max_raycast_hits_input_text_changed"]
+[connection signal="pressed" from="SettingsPanel/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]

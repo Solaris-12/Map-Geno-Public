@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{971210AB-CBA8-484C-8E1D-B78962F839DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapGeno</RootNamespace>
+    <AssemblyName>MapGeno</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="API\Commands\ExportCurrentRoomCommand.cs" />
+    <Compile Include="API\Commands\ReloadRoomsCommand.cs" />
+    <Compile Include="API\Enums\FacilityDoorType.cs" />
+    <Compile Include="API\Enums\PrimitiveObjectType.cs" />
+    <Compile Include="API\Features\Map\Exporter\VanillaRoomExport.cs" />
+    <Compile Include="API\Features\Map\Importer\GlobalImporter.cs" />
+    <Compile Include="API\Features\Map\Loader.cs" />
+    <Compile Include="API\Features\Map\RoomRaycastPoint.cs" />
+    <Compile Include="API\Features\Map\Rooms\CustomGameRoom.cs" />
+    <Compile Include="API\Features\Map\Rooms\RoomMetadata.cs" />
+    <Compile Include="API\Features\Map\VanillaCastRoom.cs" />
+    <Compile Include="API\Features\Objects\PrimitiveDoor.cs" />
+    <Compile Include="API\Features\Objects\PrimitiveItemSpawner.cs" />
+    <Compile Include="API\Features\Objects\Primitive.cs" />
+    <Compile Include="API\Features\Objects\PrimitiveSpawnPoint.cs" />
+    <Compile Include="API\Features\Objects\PrimitivePrefab.cs" />
+    <Compile Include="API\Features\Objects\PrimitiveLight.cs" />
+    <Compile Include="API\Features\Objects\PrimitiveObject.cs" />
+    <Compile Include="API\Features\Objects\Enums.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitiveDoor.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitiveSpawnPoint.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitiveLight.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitiveItemSpawn.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitivePrefab.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitiveObject.cs" />
+    <Compile Include="API\Features\Objects\Serializable\SerializedPrimitive.cs" />
+    <Compile Include="API\PrimitiveBuilder.cs" />
+    <Compile Include="API\Utils\Converters\PrimitiveObjectConverter.cs" />
+    <Compile Include="API\Utils\Converters\ColorConverter.cs" />
+    <Compile Include="API\Utils\Converters\Vector3Converter.cs" />
+    <Compile Include="API\Utils\Raycast.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="MapGeno.cs" />
+    <Compile Include="EventHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="CommandSystem.Core">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\CommandSystem.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.API">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Exiled.API.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.Events">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Exiled.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="Exiled.Permissions">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Exiled.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirror">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Mirror.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginAPI">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\PluginAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\..\c#\scp\__Useful\dll\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

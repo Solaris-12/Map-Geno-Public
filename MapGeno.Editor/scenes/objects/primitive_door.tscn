@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjrnnvpqnyqrv"]
+
+[ext_resource type="Shader" uid="uid://cakc6m7rx8dhr" path="res://assets/shaders/primitive_door.tres" id="1_slitc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4aux"]
+size = Vector3(0.136501, 2.48525, 1.87014)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whi4o"]
+render_priority = 0
+shader = ExtResource("1_slitc")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ys2bn"]
+material = SubResource("ShaderMaterial_whi4o")
+
+[node name="PrimitiveDoor" type="Area3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0175545, 1.24372, 0.0508929)
+shape = SubResource("BoxShape3D_c4aux")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.87345, 0, 0.00137186, 0, 2.4907, 0, -0.0186057, 0, -0.138135, -0.0151422, 1.24329, 0.06074)
+mesh = SubResource("BoxMesh_ys2bn")

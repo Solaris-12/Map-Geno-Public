@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://iky01svsrsnm"]
+
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/inspector/inspector_input_color.gd" id="1_apdaq"]
+
+[node name="InspectorInputColor" type="Panel"]
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_apdaq")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Layout"]
+layout_mode = 2
+
+[node name="Input" type="ColorPickerButton" parent="Layout"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[connection signal="color_changed" from="Layout/Input" to="." method="_on_input_color_changed"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxka2bm5vw35d"]
+
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/inspector/inspector_input_uneditable.gd" id="1_i2f26"]
+[ext_resource type="FontFile" uid="uid://chqy42iuayboi" path="res://assets/fonts/Inter-Medium.ttf" id="2_3pvtg"]
+[ext_resource type="FontFile" uid="uid://bxbyvwfc7osvq" path="res://assets/fonts/Inter-Regular.ttf" id="3_ajdmy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5bp88"]
+font = ExtResource("2_3pvtg")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_nk7pq"]
+font = ExtResource("3_ajdmy")
+font_size = 10
+
+[node name="InspectorInputBase" type="Panel"]
+custom_minimum_size = Vector2(0, 15)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_i2f26")
+
+[node name="Layout" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Layout"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_5bp88")
+
+[node name="Control" type="Control" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Layout"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_nk7pq")
+
+[node name="Input" type="LineEdit" parent="Layout"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2

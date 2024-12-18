@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbfpd2yaf8ua0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h86r6"]
+
+[node name="PrimitiveObject" type="Area3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_h86r6")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+
+[node name="Light" type="OmniLight3D" parent="."]
+visible = false

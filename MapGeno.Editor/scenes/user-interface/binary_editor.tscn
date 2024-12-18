@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp84hjr7sytt"]
+
+[ext_resource type="Theme" uid="uid://d1xrnjyq6hdob" path="res://theme.tres" id="1_1fxx5"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/binary_editor.gd" id="1_2v67h"]
+[ext_resource type="Texture2D" uid="uid://dcghmwmlh0nfm" path="res://assets/icons/close-icon.png" id="2_0l3rk"]
+[ext_resource type="FontFile" uid="uid://c314u6hxx1trx" path="res://assets/fonts/Inter-Bold.ttf" id="3_su3ep"]
+[ext_resource type="FontFile" uid="uid://chqy42iuayboi" path="res://assets/fonts/Inter-Medium.ttf" id="4_06o8g"]
+[ext_resource type="StyleBox" uid="uid://qax8vij7s05n" path="res://scenes/user-interface/list-holder.stylebox" id="5_l2x2q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fmupb"]
+font = ExtResource("3_su3ep")
+font_size = 20
+
+[node name="BinaryEditor" type="CanvasLayer"]
+layer = 7
+visible = false
+script = ExtResource("1_2v67h")
+
+[node name="Wrapper" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Wrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Panel" type="Panel" parent="Wrapper"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -184.0
+offset_right = 289.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1fxx5")
+
+[node name="Layout" type="VBoxContainer" parent="Wrapper/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Heading" type="HBoxContainer" parent="Wrapper/Panel/Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Wrapper/Panel/Layout/Heading"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Binary Editor"
+label_settings = SubResource("LabelSettings_fmupb")
+
+[node name="Control" type="Control" parent="Wrapper/Panel/Layout/Heading"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="Wrapper/Panel/Layout/Heading"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("2_0l3rk")
+icon_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Wrapper/Panel/Layout"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme = ExtResource("1_1fxx5")
+theme_override_fonts/font = ExtResource("4_06o8g")
+theme_override_font_sizes/font_size = 16
+text = "00000000000000000000"
+placeholder_text = "Binary here 0100"
+
+[node name="HSeparator" type="HSeparator" parent="Wrapper/Panel/Layout"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Wrapper/Panel/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("5_l2x2q")
+
+[node name="ContentHolder" type="VBoxContainer" parent="Wrapper/Panel/Layout/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ConfirmButton" type="Button" parent="Wrapper/Panel/Layout"]
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="pressed" from="Wrapper/Panel/Layout/Heading/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="text_changed" from="Wrapper/Panel/Layout/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="Wrapper/Panel/Layout/ConfirmButton" to="." method="_on_confirm_button_pressed"]

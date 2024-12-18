@@ -1,0 +1,921 @@
+[gd_scene load_steps=58 format=3 uid="uid://cyiumufgw412c"]
+
+[ext_resource type="Script" path="res://scripts/user_interface.gd" id="1_px8r4"]
+[ext_resource type="Theme" uid="uid://d1xrnjyq6hdob" path="res://theme.tres" id="2_7gogg"]
+[ext_resource type="Script" path="res://scripts/ribbon_menu.gd" id="3_rswo2"]
+[ext_resource type="Texture2D" uid="uid://bdfg8kwhcug7x" path="res://full-icon.png" id="4_dyjml"]
+[ext_resource type="Texture2D" uid="uid://brccp8qhf55gn" path="res://assets/icons/cube-icon.png" id="4_il10p"]
+[ext_resource type="Script" path="res://scripts/map-geno/editor/editor.gd" id="5_evjhl"]
+[ext_resource type="Texture2D" uid="uid://bb1i6eu472c1" path="res://assets/icons/sphere-icon.png" id="5_guy38"]
+[ext_resource type="Texture2D" uid="uid://bwgu7oxiw3ewm" path="res://assets/icons/plus_icon.png" id="5_p4nbb"]
+[ext_resource type="Texture2D" uid="uid://cofsv6va541w6" path="res://assets/icons/capsule-icon.png" id="6_bl15n"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/modals/create-object-modal.gd" id="6_erpfk"]
+[ext_resource type="Texture2D" uid="uid://c1133rasx3w6x" path="res://assets/icons/cursor-icon.png" id="6_sylhk"]
+[ext_resource type="Texture2D" uid="uid://cj6yjxdf3g3g4" path="res://assets/icons/cylinder-icon.png" id="7_0rcmf"]
+[ext_resource type="Texture2D" uid="uid://ccq7x3iulrg6k" path="res://assets/icons/move-icon.png" id="7_jmjye"]
+[ext_resource type="Texture2D" uid="uid://dk37n8clx481k" path="res://assets/icons/plane-icon.png" id="8_c746p"]
+[ext_resource type="Texture2D" uid="uid://26u60jd60vdq" path="res://assets/icons/rotate-icon.png" id="8_sgrlx"]
+[ext_resource type="Texture2D" uid="uid://dw6qjenrql66t" path="res://assets/icons/scale-icon.png" id="9_uoij0"]
+[ext_resource type="Texture2D" uid="uid://oafewdjs16l5" path="res://assets/icons/light-icon.png" id="11_pm43x"]
+[ext_resource type="Texture2D" uid="uid://ctys7vbgju60n" path="res://assets/icons/template-icon.png" id="12_auwwq"]
+[ext_resource type="Texture2D" uid="uid://cvsylu4byksat" path="res://assets/icons/trash-icon.png" id="12_p2oiu"]
+[ext_resource type="Texture2D" uid="uid://b4xl1gh41qgx3" path="res://assets/icons/undo-icon.png" id="12_qm76j"]
+[ext_resource type="Texture2D" uid="uid://dwn8sn1s4u6t3" path="res://assets/icons/sword-item-icon.png" id="13_3u1hj"]
+[ext_resource type="Texture2D" uid="uid://1xc2g026n1r2" path="res://assets/icons/redo-icon.png" id="13_cskyh"]
+[ext_resource type="Script" path="res://scripts/map-geno/editor/object_list_wrapper.gd" id="14_0rnqk"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/modals/loading-wrapper.gd" id="15_amsoy"]
+[ext_resource type="Texture2D" uid="uid://bf3m8b6yeua8e" path="res://assets/icons/duplicate-icon.png" id="15_ko1wx"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/object-editor-toolbar.gd" id="17_37efw"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/tool-wrapper.gd" id="20_56lo0"]
+[ext_resource type="Texture2D" uid="uid://cisur08bba4ub" path="res://assets/icons/x-axis-icon.png" id="21_4f8dp"]
+[ext_resource type="Texture2D" uid="uid://b0f573wjmatth" path="res://assets/icons/y-axis-icon.png" id="22_osuhs"]
+[ext_resource type="Texture2D" uid="uid://dp51dmld1upbi" path="res://assets/icons/z-axis-icon.png" id="23_nbeqp"]
+[ext_resource type="Script" path="res://scripts/garbage/InspectorPrefabTypeOption.gd" id="25_57cod"]
+[ext_resource type="Script" path="res://scripts/garbage/InspectorItemTypeOption.gd" id="25_ty53c"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/inspector.gd" id="28_ghmp1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk8p4"]
+bg_color = Color(0.164623, 0.164991, 0.172921, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8ftg"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_e1lnx"]
+device = -1
+keycode = 96
+unicode = 59
+
+[sub_resource type="InputEventKey" id="InputEventKey_6fqsr"]
+device = -1
+ctrl_pressed = true
+keycode = 65
+
+[sub_resource type="Shortcut" id="Shortcut_du4i7"]
+events = [SubResource("InputEventKey_e1lnx"), SubResource("InputEventKey_6fqsr")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_krmqr"]
+device = -1
+keycode = 4194308
+
+[sub_resource type="InputEventKey" id="InputEventKey_dtcuh"]
+device = -1
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_ufaet"]
+events = [SubResource("InputEventKey_krmqr"), SubResource("InputEventKey_dtcuh")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ujkfj"]
+device = -1
+ctrl_pressed = true
+keycode = 68
+
+[sub_resource type="Shortcut" id="Shortcut_p2pbi"]
+events = [SubResource("InputEventKey_ujkfj")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_mf4c0"]
+device = -1
+ctrl_pressed = true
+keycode = 90
+physical_keycode = 90
+key_label = 90
+
+[sub_resource type="Shortcut" id="Shortcut_lp4lw"]
+events = [SubResource("InputEventKey_mf4c0")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_p8nqd"]
+device = -1
+ctrl_pressed = true
+keycode = 89
+
+[sub_resource type="Shortcut" id="Shortcut_y0efe"]
+events = [SubResource("InputEventKey_p8nqd")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2a6ib"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.0351813, 0.0365408, 0.0575583, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.281187, 0.281187, 0.281187, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="InputEventKey" id="InputEventKey_ak2r8"]
+device = -1
+keycode = 49
+unicode = 43
+
+[sub_resource type="Shortcut" id="Shortcut_pj2fg"]
+events = [SubResource("InputEventKey_ak2r8")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ro30c"]
+device = -1
+keycode = 50
+unicode = 283
+
+[sub_resource type="Shortcut" id="Shortcut_it5q3"]
+events = [SubResource("InputEventKey_ro30c")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8s3wx"]
+device = -1
+keycode = 51
+unicode = 353
+
+[sub_resource type="Shortcut" id="Shortcut_y7hxn"]
+events = [SubResource("InputEventKey_8s3wx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pgnm1"]
+device = -1
+keycode = 52
+unicode = 269
+
+[sub_resource type="Shortcut" id="Shortcut_8s0jp"]
+events = [SubResource("InputEventKey_pgnm1")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0tk4"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="UserInterface" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_px8r4")
+
+[node name="UI_Wrapper" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7gogg")
+theme_override_constants/separation = 0
+
+[node name="SoftwareRibbon" type="MenuBar" parent="UI_Wrapper"]
+z_index = 20
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+script = ExtResource("3_rswo2")
+
+[node name="ColorRect" type="ColorRect" parent="UI_Wrapper/SoftwareRibbon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="FileMenuButton" type="MenuButton" parent="UI_Wrapper/SoftwareRibbon"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 79.0
+offset_bottom = 35.0
+text = "File"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Import room cast"
+popup/item_0/id = 0
+popup/item_1/text = "Import room objects"
+popup/item_1/id = 2
+popup/item_2/text = "Export room objects"
+popup/item_2/id = 1
+
+[node name="ImportRoomObjectsDialog" type="FileDialog" parent="UI_Wrapper/SoftwareRibbon"]
+title = "Open a File"
+size = Vector2i(392, 159)
+theme = ExtResource("2_7gogg")
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="ImportRoomcastDialog" type="FileDialog" parent="UI_Wrapper/SoftwareRibbon"]
+title = "Open a File"
+size = Vector2i(392, 159)
+theme = ExtResource("2_7gogg")
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="ExportFileDialog" type="FileDialog" parent="UI_Wrapper/SoftwareRibbon"]
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="TextureRect" type="TextureRect" parent="UI_Wrapper/SoftwareRibbon"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_dyjml")
+expand_mode = 1
+
+[node name="Editor" type="Control" parent="UI_Wrapper"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("5_evjhl")
+
+[node name="ObjectCreateLayer" type="CanvasLayer" parent="UI_Wrapper/Editor"]
+layer = 7
+script = ExtResource("6_erpfk")
+
+[node name="ObjectCreateWrapper" type="Control" parent="UI_Wrapper/Editor/ObjectCreateLayer"]
+visible = false
+z_index = 12
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreateObjectPanel" type="Panel" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -153.0
+offset_right = 113.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qk8p4")
+
+[node name="CreateObjectLayout" type="VBoxContainer" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreateObjectHeading" type="Label" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout"]
+layout_mode = 2
+text = "Create object"
+
+[node name="CreateObjectList" type="ItemList" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_7gogg")
+allow_reselect = true
+item_count = 8
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Box"
+item_0/icon = ExtResource("4_il10p")
+item_1/text = "Sphere"
+item_1/icon = ExtResource("5_guy38")
+item_2/text = "Capsule"
+item_2/icon = ExtResource("6_bl15n")
+item_3/text = "Cylinder"
+item_3/icon = ExtResource("7_0rcmf")
+item_4/text = "Plane"
+item_4/icon = ExtResource("8_c746p")
+item_5/text = "Light"
+item_5/icon = ExtResource("11_pm43x")
+item_6/text = "Prefab"
+item_6/icon = ExtResource("12_auwwq")
+item_7/text = "Item Spawner"
+item_7/icon = ExtResource("13_3u1hj")
+
+[node name="CreateObjectNavigationLayout" type="HBoxContainer" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout"]
+layout_mode = 2
+alignment = 1
+
+[node name="CancelCreateObject" type="Button" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout/CreateObjectNavigationLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="ConfirmCreateObject" type="Button" parent="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout/CreateObjectNavigationLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create"
+
+[node name="LoadingWrapper" type="Control" parent="UI_Wrapper/Editor"]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("15_amsoy")
+
+[node name="ColorRect" type="ColorRect" parent="UI_Wrapper/Editor/LoadingWrapper"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -51.0
+offset_right = 92.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 0.611765)
+
+[node name="LoadingLayout" type="VBoxContainer" parent="UI_Wrapper/Editor/LoadingWrapper"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -51.0
+offset_right = 82.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+alignment = 1
+
+[node name="LoadingStatusLabel" type="Label" parent="UI_Wrapper/Editor/LoadingWrapper/LoadingLayout"]
+layout_mode = 2
+text = "loading:
+X/X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadingProgressBar" type="ProgressBar" parent="UI_Wrapper/Editor/LoadingWrapper/LoadingLayout"]
+layout_mode = 2
+rounded = true
+
+[node name="EditorWrapper" type="Control" parent="UI_Wrapper/Editor"]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="UI_Wrapper/Editor/EditorWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+columns = 3
+
+[node name="ObjectEditorWrapper" type="Control" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+script = ExtResource("14_0rnqk")
+
+[node name="ObjectEditorPanel" type="Panel" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t8ftg")
+
+[node name="ObjectEditorLayout" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="ObjectEditorButtonContainer" type="HBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+script = ExtResource("17_37efw")
+
+[node name="NewObjectButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Add object"
+shortcut = SubResource("Shortcut_du4i7")
+icon = ExtResource("5_p4nbb")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RemoveObjectButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Add object"
+shortcut = SubResource("Shortcut_ufaet")
+icon = ExtResource("12_p2oiu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DuplicateObjectButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Add object"
+shortcut = SubResource("Shortcut_p2pbi")
+icon = ExtResource("15_ko1wx")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UndoButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Add object"
+shortcut = SubResource("Shortcut_lp4lw")
+icon = ExtResource("12_qm76j")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RedoButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Add object"
+shortcut = SubResource("Shortcut_y0efe")
+icon = ExtResource("13_cskyh")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ObjectHolder" type="ScrollContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2a6ib")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectHolder"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectHolder/VBoxContainer"]
+layout_mode = 2
+text = "Objects:"
+
+[node name="EditorToolWrapper" type="Control" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("20_56lo0")
+
+[node name="EditorToolLayout" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolsContainer" type="HBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="CursorToolButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.592157, 0.921569, 0.47451, 1)
+theme_override_colors/icon_hover_color = Color(0.843184, 0.843184, 0.843184, 1)
+shortcut = SubResource("Shortcut_pj2fg")
+icon = ExtResource("6_sylhk")
+expand_icon = true
+
+[node name="MoveToolButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.843184, 0.843184, 0.843184, 1)
+shortcut = SubResource("Shortcut_it5q3")
+icon = ExtResource("7_jmjye")
+expand_icon = true
+
+[node name="RotateToolButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.843184, 0.843184, 0.843184, 1)
+shortcut = SubResource("Shortcut_y7hxn")
+icon = ExtResource("8_sgrlx")
+expand_icon = true
+
+[node name="ScaleToolButton" type="Button" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.843184, 0.843184, 0.843184, 1)
+shortcut = SubResource("Shortcut_8s0jp")
+icon = ExtResource("9_uoij0")
+expand_icon = true
+
+[node name="InspectorWrapper" type="Control" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+script = ExtResource("28_ghmp1")
+
+[node name="InspectorPanel" type="Panel" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0tk4")
+
+[node name="InspectorLayout" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TabBar" type="TabBar" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout"]
+layout_mode = 2
+tab_count = 1
+tab_0/title = "Inspect"
+
+[node name="InspectorFlow" type="ScrollContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2a6ib")
+
+[node name="InspectorContentLayout" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 1
+
+[node name="InspectorPrefabData" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorPrefabData"]
+layout_mode = 2
+text = "Prefab data"
+
+[node name="InspectorPrefabTypeLayout" type="HBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorPrefabData"]
+layout_mode = 2
+
+[node name="InspectorPrefabType" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorPrefabData/InspectorPrefabTypeLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Prefab type"
+
+[node name="InspectorPrefabTypeOption" type="OptionButton" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorPrefabData/InspectorPrefabTypeLayout"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+tooltip_text = "Presets"
+fit_to_longest_item = false
+script = ExtResource("25_57cod")
+
+[node name="InspectorItemSpawnData" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorItemSpawnData"]
+layout_mode = 2
+text = "Item spawner data"
+
+[node name="InspectorItemSpawnLayout" type="HBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorItemSpawnData"]
+layout_mode = 2
+
+[node name="InspectorItemType" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorItemSpawnData/InspectorItemSpawnLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Item type"
+
+[node name="InspectorItemTypeOption" type="OptionButton" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorItemSpawnData/InspectorItemSpawnLayout"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+tooltip_text = "Presets"
+fit_to_longest_item = false
+script = ExtResource("25_ty53c")
+
+[node name="Label" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+layout_mode = 2
+text = "Position"
+
+[node name="InspectorEditPosition" type="GridContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/v_separation = 6
+
+[node name="PosX" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition/PosX"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -19.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = 20.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("21_4f8dp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PosY" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition/PosY"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -19.0
+offset_top = 5.0
+offset_right = -3.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("22_osuhs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PosZ" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition/PosZ"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -19.0
+offset_top = 5.0
+offset_right = -3.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("23_nbeqp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+layout_mode = 2
+text = "Rotation
+"
+
+[node name="InspectorEditRotation" type="GridContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/v_separation = 6
+
+[node name="RotX" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect2" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation/RotX"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 20.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("21_4f8dp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RotY" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect2" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation/RotY"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 20.0
+grow_horizontal = 0
+texture = ExtResource("22_osuhs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="RotZ" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect2" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation/RotZ"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 20.0
+grow_horizontal = 0
+texture = ExtResource("23_nbeqp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label3" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+layout_mode = 2
+text = "Scale
+"
+
+[node name="InspectorEditScale" type="GridContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/v_separation = 6
+
+[node name="ScaleX" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect3" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale/ScaleX"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = 21.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("21_4f8dp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ScaleY" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect3" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale/ScaleY"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("22_osuhs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ScaleZ" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect3" type="TextureRect" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale/ScaleZ"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 20.0
+grow_horizontal = 0
+texture = ExtResource("23_nbeqp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label4" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+layout_mode = 2
+text = "Color
+"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+layout_mode = 2
+text = "Select color"
+
+[node name="InspectorLight" type="VBoxContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout"]
+visible = false
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorLight"]
+layout_mode = 2
+text = "Light
+"
+
+[node name="InspectorEditLight" type="GridContainer" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorLight"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/v_separation = 6
+
+[node name="LightIntensity" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorLight/InspectorEditLight"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Light intensity"
+
+[node name="LightRange" type="LineEdit" parent="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorLight/InspectorEditLight"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Light range"
+
+[connection signal="file_selected" from="UI_Wrapper/SoftwareRibbon/ImportRoomObjectsDialog" to="UI_Wrapper/SoftwareRibbon" method="_on_import_room_objects_dialog_file_selected"]
+[connection signal="file_selected" from="UI_Wrapper/SoftwareRibbon/ImportRoomcastDialog" to="UI_Wrapper/SoftwareRibbon" method="_on_input_file_dialog_file_selected"]
+[connection signal="file_selected" from="UI_Wrapper/SoftwareRibbon/ExportFileDialog" to="UI_Wrapper/SoftwareRibbon" method="_on_export_file_dialog_file_selected"]
+[connection signal="current_tool_change" from="UI_Wrapper/Editor" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper" method="_on_tool_change"]
+[connection signal="nodes_selected" from="UI_Wrapper/Editor" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_editor_nodes_selected"]
+[connection signal="pressed" from="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout/CreateObjectNavigationLayout/CancelCreateObject" to="UI_Wrapper/Editor/ObjectCreateLayer" method="_on_cancel_create_object_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/ObjectCreateLayer/ObjectCreateWrapper/CreateObjectPanel/CreateObjectLayout/CreateObjectNavigationLayout/ConfirmCreateObject" to="UI_Wrapper/Editor/ObjectCreateLayer" method="_on_confirm_create_object_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer/NewObjectButton" to="UI_Wrapper/Editor" method="_on_new_object_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer/NewObjectButton" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer" method="_on_new_object_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer/RemoveObjectButton" to="." method="_on_remove_object_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer/DuplicateObjectButton" to="." method="_on_duplicate_object_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/ObjectEditorWrapper/ObjectEditorPanel/ObjectEditorLayout/ObjectEditorButtonContainer/RedoButton" to="." method="_on_redo_button_pressed"]
+[connection signal="gui_input" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper" to="." method="_on_editor_tool_wrapper_gui_input"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer/CursorToolButton" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper" method="_on_cursor_tool_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer/MoveToolButton" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper" method="_on_move_tool_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer/RotateToolButton" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper" method="_on_rotate_tool_button_pressed"]
+[connection signal="pressed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper/EditorToolLayout/ToolsContainer/ScaleToolButton" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/EditorToolWrapper" method="_on_scale_tool_button_pressed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorPrefabData/InspectorPrefabTypeLayout/InspectorPrefabType" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_inspector_prefab_type_text_changed"]
+[connection signal="item_selected" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorPrefabData/InspectorPrefabTypeLayout/InspectorPrefabTypeOption" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_option_button_item_selected"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorItemSpawnData/InspectorItemSpawnLayout/InspectorItemType" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_inspector_item_type_text_changed"]
+[connection signal="item_selected" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorItemSpawnData/InspectorItemSpawnLayout/InspectorItemTypeOption" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_inspector_item_type_option_item_selected"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition/PosX" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_pos_x_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition/PosY" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_pos_y_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditPosition/PosZ" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_pos_z_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation/RotX" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_rot_x_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation/RotY" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_rot_y_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditRotation/RotZ" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_rot_z_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale/ScaleX" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_scale_x_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale/ScaleY" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_scale_y_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorEditScale/ScaleZ" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_scale_z_text_changed"]
+[connection signal="color_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/ColorPickerButton" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_color_picker_button_color_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorLight/InspectorEditLight/LightIntensity" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_light_intensity_text_changed"]
+[connection signal="text_changed" from="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper/InspectorPanel/InspectorLayout/InspectorFlow/InspectorContentLayout/InspectorLight/InspectorEditLight/LightRange" to="UI_Wrapper/Editor/EditorWrapper/GridContainer/InspectorWrapper" method="_on_light_range_text_changed"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://4in3vf6qjbkd"]
+
+[ext_resource type="Theme" uid="uid://d1xrnjyq6hdob" path="res://theme.tres" id="1_fvgkq"]
+[ext_resource type="Script" path="res://scripts/map-geno/loading.gd" id="2_f4gum"]
+[ext_resource type="Texture2D" uid="uid://bdfg8kwhcug7x" path="res://full-icon.png" id="2_mneky"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fvgkq")
+script = ExtResource("2_f4gum")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.031109, 0.0409976, 0.0400852, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_mneky")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "
+
+
+
+
+Loading"
+horizontal_alignment = 1
+vertical_alignment = 1

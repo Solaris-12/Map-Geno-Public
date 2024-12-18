@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bltj3xxgcvxcw"]
+
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/inspector/inspector_input_binary.gd" id="1_c2hej"]
+[ext_resource type="Texture2D" uid="uid://dw6qjenrql66t" path="res://assets/icons/scale-icon.png" id="2_xs140"]
+
+[node name="InspectorInputBinary" type="Panel"]
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_c2hej")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Layout"]
+layout_mode = 2
+
+[node name="Input" type="LineEdit" parent="Layout"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="VBox" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Value" type="LineEdit" parent="Layout/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Binary here 2,4,8,16,..."
+
+[node name="OpenButton" type="Button" parent="Layout/VBox"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+tooltip_text = "Presets"
+icon = ExtResource("2_xs140")
+expand_icon = true
+
+[connection signal="text_changed" from="Layout/VBox/Value" to="." method="_on_option_value_text_changed"]
+[connection signal="pressed" from="Layout/VBox/OpenButton" to="." method="_on_open_button_pressed"]

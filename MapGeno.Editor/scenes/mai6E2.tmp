@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqmgew3l2doke"]
+
+[ext_resource type="Script" path="res://scripts/room_importer.gd" id="1_fsv57"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_gxsql"]
+[ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="2_yn5he"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qeb2t"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.75, 0.75, 0.75, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="Sky" id="Sky_ixai6"]
+sky_material = SubResource("ProceduralSkyMaterial_qeb2t")
+
+[sub_resource type="Environment" id="Environment_mkfew"]
+background_mode = 2
+sky = SubResource("Sky_ixai6")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mkfew")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 179.855)
+fov = 92.0
+script = ExtResource("2_gxsql")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_yn5he")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "loading:
+X/X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldHolder" type="Node3D" parent="."]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 1
+script = ExtResource("1_fsv57")
+
+[connection signal="import_update" from="WorldHolder" to="CanvasLayer" method="_on_world_holder_import_update"]

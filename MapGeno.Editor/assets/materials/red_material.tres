@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://f0g3splbn4w0"]
+
+[resource]
+no_depth_test = true
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.888173, 0, 0.133996, 1)
+grow_amount = -15.17

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqmgew3l2doke"]
+
+[ext_resource type="Script" path="res://scripts/map-geno/root.gd" id="1_fpgys"]
+[ext_resource type="Script" path="res://scripts/room_importer.gd" id="1_fsv57"]
+[ext_resource type="PackedScene" uid="uid://cyiumufgw412c" path="res://scenes/user_interface.tscn" id="2_bmjxc"]
+[ext_resource type="Script" path="res://scripts/map-geno/user-interface/camera.gd" id="2_gxsql"]
+[ext_resource type="PackedScene" uid="uid://dsn24gprov5fw" path="res://scenes/object_edit_cursor.tscn" id="5_b44eg"]
+[ext_resource type="Script" path="res://scripts/room_exporter.gd" id="6_0o5kd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qeb2t"]
+sky_top_color = Color(0.385493, 0.385492, 0.385492, 1)
+sky_horizon_color = Color(0.237539, 0.237539, 0.237539, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.239216, 0.239216, 0.239216, 1)
+ground_curve = 0.937018
+
+[sub_resource type="Sky" id="Sky_ixai6"]
+sky_material = SubResource("ProceduralSkyMaterial_qeb2t")
+
+[sub_resource type="Environment" id="Environment_mkfew"]
+background_mode = 2
+sky = SubResource("Sky_ixai6")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Root" type="Node3D"]
+top_level = true
+script = ExtResource("1_fpgys")
+
+[node name="ProgramManager" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="UserInterface" parent="ProgramManager" instance=ExtResource("2_bmjxc")]
+
+[node name="CursorLayer" type="CanvasLayer" parent="ProgramManager"]
+layer = 2
+
+[node name="ObjectEditCursor" parent="ProgramManager/CursorLayer" instance=ExtResource("5_b44eg")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mkfew")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+fov = 90.7054
+script = ExtResource("2_gxsql")
+
+[node name="WorldHolder" type="Node3D" parent="."]
+script = ExtResource("1_fsv57")
+
+[node name="ObjectHolder" type="Node3D" parent="."]
+script = ExtResource("6_0o5kd")
+
+[connection signal="modified_object" from="ProgramManager/CursorLayer/ObjectEditCursor" to="ProgramManager/UserInterface" method="handle_object_change"]
+[connection signal="on_move" from="Camera3D" to="ProgramManager/UserInterface" method="_on_camera_3d_on_move"]
+[connection signal="import_update" from="WorldHolder" to="ProgramManager/UserInterface" method="_on_world_holder_import_update"]
